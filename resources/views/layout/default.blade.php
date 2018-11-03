@@ -5,6 +5,7 @@
 <div class="container">
     @include('layout._notice')
     @yield('contents')
+    @yield('javascript')
 </div>
 
 

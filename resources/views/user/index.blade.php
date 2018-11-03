@@ -17,7 +17,7 @@
         <td>{{$shop_user->id}}</td>
         <td>{{$shop_user->name}}</td>
         <td>{{$shop_user->shop_id}}</td>
-        <td>{{$shop_user->status?'正常':'待审核'}}</td>
+        <td>{{$shop_user->status?'待审核':'正常'}}</td>
         <td>{{$shop_user->email}}</td>
 
         <td><a href="{{route('shop_user.status',[$shop_user])}}"class="btn btn-danger">{{$shop_user->status?'启用':'禁用'}}</a>

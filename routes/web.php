@@ -51,3 +51,10 @@ Route::post('shop_user_save','UserController@reset_save')->name('user.reset_save
 Route::resource('menucategory','MenuCategoryController');
 //菜品
 Route::resource('menu','MenuController');
+//活动
+Route::resource('activity','ActivityController');
+//文件上传
+Route::post('upload','shopcatagoryController@upload')->name('upload');
+//会员列表
+Route::resource('member','MemberController');
+Route::get('member/{member}/status','MemberController@status')->name('member.status');

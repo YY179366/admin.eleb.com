@@ -26,7 +26,7 @@
     @foreach($shops as $shop)
     <tr>
         <td>{{$shop->id}}</td>
-        <td>{{$shop->Shop_category->name }}</td>
+        <td>{{$shop->name }}</td>
         <td>{{$shop->shop_name}}</td>
         <td>@if($shop->shop_img) <img class="img-circle"src="{{ \Illuminate\Support\Facades\Storage::url($shop->shop_img) }}" width="50px"/> @endif</td>
         <td>{{$shop->shop_rating}}</td>
