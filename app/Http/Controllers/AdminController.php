@@ -6,10 +6,15 @@ use App\admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 
 class AdminController extends Controller
 {
+
+    public function show(){
+
+    }
     //显示管理员账户
     public function index(){
         $admins = Admin::paginate(5);
@@ -17,7 +22,7 @@ class AdminController extends Controller
     }
     //添加管理员
     public function create(){
-        $roles = admin::all();
+        $roles = Role::all();
         return view('admin/create',compact('roles'));
     }
     //保存管理员账号
@@ -37,12 +42,20 @@ class AdminController extends Controller
 
         //密码加密
         $password = bcrypt($request->password);
-        //保存数据
+        //判断是否给与权限
+        if ($request->roles){
+            admin::create([
+                'name'=>$request->name,
+                'email'=>$request->email,
+                'password'=>$password,
+            ])->assignRole($request->roles);
+        }else{
             admin::create([
                 'name'=>$request->name,
                 'email'=>$request->email,
                 'password'=>$password,
             ]);
+        }
 
 
 
@@ -50,12 +63,13 @@ class AdminController extends Controller
         return redirect()->route('admin.index')->with('success','添加管理员账户成功');
     }
     public function edit(admin $admin){
-        $roles = admin::all();
+        $roles =Role::all();
+
         return view('admin/edit',['admin'=>$admin,'roles'=>$roles]);
     }
 
     //修改--保存
-    public function update(Request $request , Admin $admin){
+    public function update(Request $request , admin $admin){
         //数据验证
         $request->validate([
             'captcha' => 'required|captcha',
@@ -68,14 +82,20 @@ class AdminController extends Controller
             'name.required'=>'用户账号必须输入',
         ]);
 
+        //判断是否有权限
+        if ($request->roles){
+            //保存数据
+            $admin->syncRoles($request->roles)->update([
+                'name'=>$request->name,
+                'email'=>$request->email,
+            ]);
+        }else{
             //保存数据
             $admin->update([
                 'name'=>$request->name,
                 'email'=>$request->email,
             ]);
-
-
-
+        }
 
         //跳转
         return redirect()->route('admin.index')->with('success','修改保存成功');
@@ -120,4 +140,5 @@ class AdminController extends Controller
             return redirect()->route('admin.change')->with('danger','旧密码输入错误,请重新输入');
         }
     }
+
 }

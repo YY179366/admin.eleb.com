@@ -58,3 +58,17 @@ Route::post('upload','shopcatagoryController@upload')->name('upload');
 //会员列表
 Route::resource('member','MemberController');
 Route::get('member/{member}/status','MemberController@status')->name('member.status');
+//权限管理
+Route::resource('permission','PermissionController');
+//角色管理
+Route::resource('role','RoleController');
+//导航菜单
+Route::resource('nav','NavController');
+//抽奖活动
+Route::resource('event','EventController');
+//抽奖奖品
+Route::resource('event_member','Event_MemberController');
+//活动报名表
+Route::resource('event_prize','event_prizeController');
+//开始抽奖
+Route::get('event/{event}/start','EventController@start')->name('start');

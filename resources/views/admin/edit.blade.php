@@ -13,8 +13,14 @@
                 管理员邮箱:
             </label>
             <input type="email" name="email" class="form-control" placeholder="邮箱" value="{{$admin->email}}"><br>
-            <label for="">
-
+                <label for="">
+                    选择权限:
+                </label>
+                <div class="checkbox">
+                    @foreach($roles as $role)
+                    &emsp;&emsp;<input type="checkbox" name="roles[]" value="{{$role->id}}"  @if($admin->hasRole($role))checked @endif >{{$role->name}}&emsp;&emsp;
+                    @endforeach
+                </div>
             <label for="">
                 验证码:
             </label>

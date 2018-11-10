@@ -15,62 +15,12 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">管理员 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('admin.index')}}">管理员首页</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('admin.create')}}">添加管理员</a></li>
-                        <li role="separator" class="divider"></li>
+                <li><a href="#">Link</a></li>
 
-                    </ul>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商家详情表 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('shop.index')}}">商家类首页</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('shop.create')}}">添加商家分类</a></li>
-                        <li role="separator" class="divider"></li>
+                {!! \App\Nav::getNavHtml() !!}
 
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">商家注册表 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('user.index')}}">商家类首页</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('user.create')}}">添加商家分类</a></li>
-                        <li role="separator" class="divider"></li>
-
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">分类管理 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('shopcatagory.index')}}">商家类首页</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('catagory')}}">添加商家分类</a></li>
-                        <li role="separator" class="divider"></li>
-
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">活动管理 <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="{{route('activity.index')}}">活动首页</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="{{route('activity.create')}}">活动添加</a></li>
-                        <li role="separator" class="divider"></li>
-
-                    </ul>
-                </li>
             </ul>
-            <form class="navbar-form navbar-left">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+
             <ul class="nav navbar-nav navbar-right">
                 @guest
                 <li><a href="{{route('login')}}">登录</a></li>

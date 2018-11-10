@@ -18,6 +18,14 @@
             </label>
             <input type="password" name="password" class="form-control" placeholder="输入添加密码"><br>
 
+            <label>
+                选择角色:
+            </label>
+            <div class="checkbox">
+                @foreach($roles as $role)
+                    <input type="checkbox" name="roles[]" value="{{$role->id}}" >{{$role->name}}&emsp;&emsp;&emsp;&emsp;
+                @endforeach
+            </div>
             <label for="">
                 验证码:
             </label>

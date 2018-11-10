@@ -26,9 +26,9 @@
                 <td>@if($member->status == 0)已禁用@else正常@endif</td>
                 <td>
                     {{--修改--}}
-
+                    @can('member_update')
                         <a href="{{route("member.edit",[$member])}}"><button class="btn btn-primary btn-xs"><span>编辑</span></button></a>
-
+                    @endcan
                     {{--删除--}}
 
                         <form action="{{route('member.destroy',[$member])}}" method="post">
